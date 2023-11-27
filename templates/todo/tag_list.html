@@ -4,14 +4,10 @@
 {% block content %}
   <h1>
     Tags
-{#    <a href="{% url 'todo:tag-create' %}" class="btn btn-primary link-to-page">#}
-{#      Create#}
-{#    </a>#}
+    <a href="{% url 'todo:tag-create' %}" class="btn btn-primary link-to-page">
+      Add
+    </a>
   </h1>
-{#  <form action="" method="get" class="form-inline">#}
-{#    {{ search_form|crispy }}#}
-{#    <input class="btn btn-secondary" type="submit" value="🔎">#}
-{#  </form>#}
 
   {% if tag_list %}
     <table class="table">
@@ -26,17 +22,16 @@
           <td>
             {{ tag.name }}
           </td>
-{#          <td>#}
-{#            <a href="{% url 'todo:tag-update' pk=tag.id %}">#}
-{#              Update#}
-{#            </a>#}
-{#          </td>#}
-{#          <td>#}
-{#            <a style="color: red"#}
-{#               href="{% url 'todo:tag-delete' pk=tag.id %}">#}
-{#              Delete#}
-{#            </a>#}
-{#          </td>#}
+          <td>
+            <a href="{% url 'todo:tag-update' pk=tag.id %}" class="btn btn-secondary">
+              Update
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'todo:tag-delete' pk=tag.id %}" class="btn btn-secondary">
+              Delete
+            </a>
+          </td>
         </tr>
       {% endfor %}
     </table>
