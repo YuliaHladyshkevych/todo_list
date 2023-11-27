@@ -4,25 +4,42 @@
 {% block content %}
   <h1>
     TODO list
-    {#    <a href="{% url 'todo:task-create' %}" class="btn btn-primary link-to-page">#}
-    {#      Create#}
-    {#    </a>#}
+    <a href="{% url 'todo:task-create' %}" class="btn btn-primary link-to-page">
+      Add task
+    </a>
   </h1>
 
+  {% if task_list %}
+    {% for task in task_list %}
+      <h5>
+        <strong>{{ task.content }}
+          {% if task.is_done %}
+            <p class="text-success" style="display: inline">Done</p>
+          {% else %}
+            <p class="text-danger" style="display: inline">Not done</p>
+          {% endif %}
+          <a href="{% url 'todo:task-complete' task.id %}" class="btn btn-secondary link-to-page">Undo</a>
+        </strong>
+      </h5>
 
-{#  <div class="ml-3">#}
-{#    <h4>Tasks</h4>#}
-{##}
-{#    {% for task in tasks.all %}#}
-{#      <hr>#}
-{#      <p><strong> {{ task.content }} </strong> {% if task.is_done %} Done {% else %} Not done {% endif %}</p>#}
-{#      <p>Created: {{ task.datetime_created }}</p>#}
-{#      <p class="text-muted">Tags: {{ task.tags }}</p>#}
-{##}
-{#    {% empty %}#}
-{#      <p>No tasks!</p>#}
-{#    {% endfor %}#}
-{#  </div>#}
+      <p style="display: inline">Created: {{ task.datetime_created }}</p>
 
+      {% if task.deadline %}
+        <p style="display: inline; color: brown">Deadline: {{ task.deadline }}</p>
+      {% endif %}
+
+      <p class="text-muted">
+        Tags:
+        {% for tag in task.tags.all %}
+          {{ tag }}
+        {% endfor %}
+        <a href="{% url 'todo:task-update' task.id %}">Update</a>
+        <a href="{% url 'todo:task-delete' task.id %}">Delete</a>
+      </p>
+      <hr>
+    {% endfor %}
+  {% else %}
+    <p>No tasks!</p>
+  {% endif %}
 
 {% endblock %}
