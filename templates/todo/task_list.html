@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    TODO list
+    {#    <a href="{% url 'todo:task-create' %}" class="btn btn-primary link-to-page">#}
+    {#      Create#}
+    {#    </a>#}
+  </h1>
+  {#  <form action="" method="get" class="form-inline">#}
+  {#    {{ search_form|crispy }}#}
+  {#    <input class="btn btn-secondary" type="submit" value=" 🔎">#}
+  {#  </form>#}
+
+{#  <div class="ml-3">#}
+{#    <h4>Tasks</h4>#}
+{##}
+{#    {% for task in tasks.all %}#}
+{#      <hr>#}
+{#      <p><strong> {{ task.content }} </strong> {% if task.is_done %} Done {% else %} Not done {% endif %}</p>#}
+{#      <p>Created: {{ task.datetime_created }}</p>#}
+{#      <p class="text-muted">Tags: {{ task.tags }}</p>#}
+{##}
+{#    {% empty %}#}
+{#      <p>No tasks!</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+
+
+{% endblock %}

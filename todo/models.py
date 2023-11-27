@@ -12,7 +12,6 @@ class Tag(models.Model):
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=100)
     content = models.TextField()
     datetime_created = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(null=True, blank=True)
@@ -23,4 +22,4 @@ class Task(models.Model):
         ordering = ["is_done", "-datetime_created"]
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.content}"
