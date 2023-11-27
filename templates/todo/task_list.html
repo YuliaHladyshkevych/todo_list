@@ -15,10 +15,12 @@
         <strong>{{ task.content }}
           {% if task.is_done %}
             <p class="text-success" style="display: inline">Done</p>
+            <a href="{% url 'todo:task-complete' task.id %}" class="btn btn-secondary link-to-page">Undo</a>
           {% else %}
             <p class="text-danger" style="display: inline">Not done</p>
+            <a href="{% url 'todo:task-complete' task.id %}" class="btn btn-success link-to-page">Complete</a>
           {% endif %}
-          <a href="{% url 'todo:task-complete' task.id %}" class="btn btn-secondary link-to-page">Undo</a>
+
         </strong>
       </h5>
 
